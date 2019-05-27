@@ -17,9 +17,10 @@
     register: installer_dir
 
   - name: "Download & Unpack Ansible Tower installer"
-    shell: curl {{ ansible_tower_download_url }} | tar xzf -
-    args:
-      warn: False
+    unarchive: 
+      src: "{{ ansible_tower_download_url }}"
+      dest: "{{ ansible_tower_dir }}"
+      remote_src: true
     when: not installer_dir.stat.exists
 
   - name: "Set up the Ansible Tower inventory"
@@ -34,9 +35,10 @@
       chdir: "{{ ansible_tower_dir }}"
 
   - name: "Download and Install the 'oc' client for OpenShift interactions"
-    shell: curl {{ ansible_tower_oc_download_url }} | tar -C /bin/ -xzf -
-    args:
-      warn: False
+    unarchive: 
+      src: "{{ ansible_tower_oc_download_url }}"
+      dest: "/bin/"
+      remote_src: true
     when:
     - ansible_tower_oc_download_url|trim != ''
 

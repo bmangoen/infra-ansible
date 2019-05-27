@@ -1,8 +1,15 @@
 
 [tower]
+{% if ansible_tower.install.tower_instances is defined %}
+  {% for instance in ansible_tower.install.tower_instances %}
+{{ instance }}
+  {% endfor %}
+{% else %}
 localhost ansible_connection=local
+{% endif %}
 
 [database]
+{{ ansible_tower.install.pg.host | default('') }}
 
 [all:vars]
 admin_password='{{ ansible_tower.admin_password }}'

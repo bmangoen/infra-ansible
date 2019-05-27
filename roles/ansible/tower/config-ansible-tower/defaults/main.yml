@@ -1,7 +1,7 @@
 ---
 
-# ansible_tower_download_url: http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz
-ansible_tower_download_url: https://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-3.3.0-1.tar.gz
+# Using the latest version of ansible-tower bundle
+ansible_tower_download_url: https://releases.ansible.com/ansible-tower/setup-bundle/ansible-tower-setup-bundle-latest.el7.tar.gz
 
 # oc clients found at 'https://mirror.openshift.com/pub/openshift-v3/clients/'
 ansible_tower_oc_download_url: https://mirror.openshift.com/pub/openshift-v3/clients/3.10.47/linux/oc.tar.gz
